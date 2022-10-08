@@ -1,22 +1,31 @@
-import { Text, View } from "react-native";
-
 import React from "react";
-import { products } from "../../constants/data";
+import { View, Text, Button } from "react-native";
 import { styles } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../store/actions";
 
 const Product = ({ navigation, route }) => {
-  const { productId } = route.params;
-  const product = products.find((product) => product.id === productId);
+    const dispatch = useDispatch();
+    const product = useSelector((state) => state.products.selected);
 
-  return (
-    <View style={styles.container}>
-      <Text>id: {product.id}</Text>
-      <Text>{product.title}</Text>
-      <Text>{product.description}</Text>
-      <Text>$ {product.price}</Text>
-      <Text>weight: {product.weight}</Text>
-    </View>
-  );
+    const addCartItem = () => {
+        dispatch(addToCart(product));
+    }
+    
+    const { id, title, description, price, weight } = product || {};
+    return (
+        <View style={styles.container}>
+            <Text>id: {id}</Text>
+            <Text>{title}</Text>
+            <Text>{description}</Text>
+            <Text>${price}</Text>
+            <Text>weight: {weight}</Text>
+            <Button 
+                title="Add to cart"
+                onPress={addCartItem}
+            />
+        </View>
+    )
 };
 
 export default Product;

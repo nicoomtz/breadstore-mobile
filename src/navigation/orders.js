@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 const OrdersNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Order"
+      initialRouteName="Orders"
       screenOptions={{
         headerStyle: {
           backgroundColor: isAndroid ? colors.primary : colors.secondary,
@@ -17,7 +17,6 @@ const OrdersNavigator = () => {
         headerTintColor: colors.text,
         headerTitleStyle: {
           fontFamily: "Lato-Bold",
-          textAlign: "center",
         },
       }}
     >
@@ -25,4 +24,5 @@ const OrdersNavigator = () => {
     </Stack.Navigator>
   );
 };
+
 export default OrdersNavigator;

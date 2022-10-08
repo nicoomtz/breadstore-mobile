@@ -1,31 +1,34 @@
-import { Button, FlatList, Text, View } from "react-native";
-
+import React, { useEffect} from "react";
+import { View, Text, Button, FlatList } from "react-native";
 import { ProductItem } from "../../components";
-import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { products } from "../../constants/data";
 import { styles } from "./styles";
+import { filteredProducts, selectedProduct } from "../../store/actions";
 
-const Products = ({ navigation, route }) => {
-  const { categoryId } = route.params;
-  const productsFiltered = products.filter(
-    (product) => product.categoryId === categoryId
-  );
+const Products = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const selectedCategory = useSelector((state) => state.category.selected);
 
-  const onSelected = (item) => {
-    navigation.navigate("Product", { name: item.title, productId: item.id });
-  };
+    const productsFiltered = useSelector((state) => state.products.filteredProducts);
 
-  const renderItem = ({ item }) => (
-    <ProductItem item={item} onSelected={onSelected} />
-  );
+    useEffect(() => {
+        dispatch(filteredProducts(selectedCategory.id))
+    }, []);
 
-  return (
-    <FlatList
-      data={productsFiltered}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id.toString()}
-    />
-  );
+    const onSelected = (item) => {
+        dispatch(selectedProduct(item.id))
+       navigation.navigate('Product', { name: item.title});
+    };   
+    const renderItem = ({ item }) => <ProductItem item={item} onSelected={onSelected} />
+
+    return (
+        <FlatList 
+            data={productsFiltered}
+            renderItem={renderItem}
+            keyExtractor={item => item.id.toString()}
+        />
+    )
 };
 
 export default Products;

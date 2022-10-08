@@ -17,7 +17,6 @@ const Tabs = () => {
         tabBarLabelStyle: {
           fontFamily: "Lato-Bold",
           color: colors.primary,
-          fontSize: 12,
         },
       }}
     >
@@ -29,7 +28,7 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? "home" : "home-outline"}
-              size={focused ? 26 : 22}
+              size={22}
               color={colors.primary}
             />
           ),
@@ -43,7 +42,7 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? "file-tray-full" : "file-tray-full-outline"}
-              size={focused ? 26 : 22}
+              size={22}
               color={colors.primary}
             />
           ),
@@ -57,7 +56,7 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? "cart" : "cart-outline"}
-              size={focused ? 26 : 22}
+              size={22}
               color={colors.primary}
             />
           ),

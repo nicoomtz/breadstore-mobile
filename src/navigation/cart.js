@@ -1,8 +1,8 @@
-import { Cart } from "../screens";
 import React from "react";
-import { colors } from "../constants/themes";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { isAndroid } from "../utils";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Cart } from "../screens";
+import { colors } from "../constants/themes";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +17,6 @@ const CartNavigator = () => {
         headerTintColor: colors.text,
         headerTitleStyle: {
           fontFamily: "Lato-Bold",
-          textAlign: "center",
         },
       }}
     >
@@ -25,4 +24,5 @@ const CartNavigator = () => {
     </Stack.Navigator>
   );
 };
+
 export default CartNavigator;
