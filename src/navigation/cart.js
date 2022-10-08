@@ -1,8 +1,8 @@
-import React from "react";
-import { isAndroid } from "../utils";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Cart } from "../screens";
+import React from "react";
 import { colors } from "../constants/themes";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { isAndroid } from "../utils";
 
 const Stack = createNativeStackNavigator();
 
